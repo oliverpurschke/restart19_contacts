@@ -1,2 +1,2 @@
-# restart19_contacts
-Restart-19: Preparation, analysis and visualization of the UWB-contact tracer data
+# Restart-19 contacts
+R-scripts for preparation, analysis and visualization of the UWB-contact tracer data within Restart-19 project
