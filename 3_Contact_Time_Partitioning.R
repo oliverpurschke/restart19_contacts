@@ -322,31 +322,32 @@ t_kont_1_s1_3_w_par_gapfill <-
         mutate(Scenario = 1,
                Part = "Half Time 2")
       
-    ) %>% 
+    ) %>%
       
       # Ex ####
     
-    bind_rows(t_kont_1_S3D9EF6C %>%
-                ungroup() %>%
-                mutate(
-                  Int_dist_all = case_when(
-                    uwb_start_abs_1 >= A1_ges_start &
-                      uwb_end_abs_1 <= A1_ges_end
-                    ~ interval(uwb_start_abs_1, uwb_end_abs_1),
-                    
-                    between(uwb_start_abs_1, A1_ges_start, A1_ges_end) &
-                      uwb_end_abs_1 > A1_ges_end
-                    ~  interval(uwb_start_abs_1, A1_ges_end),
-                    
-                    between(uwb_end_abs_1, A1_ges_start, A1_ges_end) &
-                      uwb_start_abs_1 < A1_ges_start
-                    ~  interval(A1_ges_start, uwb_end_abs_1),
-                    
-                    uwb_start_abs_1 < A1_ges_start &
-                      uwb_end_abs_1 > A1_ges_end
-                    ~  interval(A1_ges_start, A1_ges_end)
-                  )
-                ) %>% 
+    bind_rows(
+      t_kont_1_S3D9EF6C %>%
+        ungroup() %>%
+        mutate(
+          Int_dist_all = case_when(
+            uwb_start_abs_1 >= A1_ges_start &
+              uwb_end_abs_1 <= A1_ges_end
+            ~ interval(uwb_start_abs_1, uwb_end_abs_1),
+            
+            between(uwb_start_abs_1, A1_ges_start, A1_ges_end) &
+              uwb_end_abs_1 > A1_ges_end
+            ~  interval(uwb_start_abs_1, A1_ges_end),
+            
+            between(uwb_end_abs_1, A1_ges_start, A1_ges_end) &
+              uwb_start_abs_1 < A1_ges_start
+            ~  interval(A1_ges_start, uwb_end_abs_1),
+            
+            uwb_start_abs_1 < A1_ges_start &
+              uwb_end_abs_1 > A1_ges_end
+            ~  interval(A1_ges_start, A1_ges_end)
+          )
+        ) %>%
         
         
         filter(!is.na(Int_dist_all)) %>%
@@ -361,7 +362,6 @@ t_kont_1_s1_3_w_par_gapfill <-
         t_kont_1_S3D9EF6C %>%
           ungroup() %>%
           mutate(
-
             # En ####
             
             Int_dist_all = case_when(
@@ -373,11 +373,11 @@ t_kont_1_s1_3_w_par_gapfill <-
                 uwb_end_abs_1 > E2_ges_end
               ~  interval(uwb_start_abs_1, E2_ges_end),
               
-                            between(uwb_end_abs_1, E2_ges_start, E2_ges_end) &
+              between(uwb_end_abs_1, E2_ges_start, E2_ges_end) &
                 uwb_start_abs_1 < E2_ges_start
               ~  interval(E2_ges_start, uwb_end_abs_1),
               
-                            uwb_start_abs_1 < E2_ges_start &
+              uwb_start_abs_1 < E2_ges_start &
                 uwb_end_abs_1 > E2_ges_end
               ~  interval(E2_ges_start, E2_ges_end)
             )
@@ -397,15 +397,15 @@ t_kont_1_s1_3_w_par_gapfill <-
                 uwb_end_abs_1 <= HZ1_2_ges_end
               ~ interval(uwb_start_abs_1, uwb_end_abs_1),
               
-                            between(uwb_start_abs_1, HZ1_2_ges_start, HZ1_2_ges_end) &
+              between(uwb_start_abs_1, HZ1_2_ges_start, HZ1_2_ges_end) &
                 uwb_end_abs_1 > HZ1_2_ges_end
               ~  interval(uwb_start_abs_1, HZ1_2_ges_end),
               
-                            between(uwb_end_abs_1, HZ1_2_ges_start, HZ1_2_ges_end) &
+              between(uwb_end_abs_1, HZ1_2_ges_start, HZ1_2_ges_end) &
                 uwb_start_abs_1 < HZ1_2_ges_start
               ~  interval(HZ1_2_ges_start, uwb_end_abs_1),
               
-                            uwb_start_abs_1 < HZ1_2_ges_start &
+              uwb_start_abs_1 < HZ1_2_ges_start &
                 uwb_end_abs_1 > HZ1_2_ges_end
               ~  interval(HZ1_2_ges_start, HZ1_2_ges_end)
             )
@@ -437,7 +437,7 @@ t_kont_1_s1_3_w_par_gapfill <-
               uwb_start_abs_1 < P2_ges_start
             ~  interval(P2_ges_start, uwb_end_abs_1),
             
-                        uwb_start_abs_1 < P2_ges_start &
+            uwb_start_abs_1 < P2_ges_start &
               uwb_end_abs_1 > P2_ges_end
             ~  interval(P2_ges_start, P2_ges_end)
           )
@@ -459,15 +459,15 @@ t_kont_1_s1_3_w_par_gapfill <-
               uwb_end_abs_1 <= HZ2_2_ges_end
             ~ interval(uwb_start_abs_1, uwb_end_abs_1),
             
-                        between(uwb_start_abs_1, HZ2_2_ges_start, HZ2_2_ges_end) &
+            between(uwb_start_abs_1, HZ2_2_ges_start, HZ2_2_ges_end) &
               uwb_end_abs_1 > HZ2_2_ges_end
             ~  interval(uwb_start_abs_1, HZ2_2_ges_end),
             
-                        between(uwb_end_abs_1, HZ2_2_ges_start, HZ2_2_ges_end) &
+            between(uwb_end_abs_1, HZ2_2_ges_start, HZ2_2_ges_end) &
               uwb_start_abs_1 < HZ2_2_ges_start
             ~  interval(HZ2_2_ges_start, uwb_end_abs_1),
             
-                        uwb_start_abs_1 < HZ2_2_ges_start &
+            uwb_start_abs_1 < HZ2_2_ges_start &
               uwb_end_abs_1 > HZ2_2_ges_end
             ~  interval(HZ2_2_ges_start, HZ2_2_ges_end)
           )
@@ -489,15 +489,15 @@ t_kont_1_s1_3_w_par_gapfill <-
               uwb_end_abs_1 <= A2_ges_end
             ~ interval(uwb_start_abs_1, uwb_end_abs_1),
             
-                        between(uwb_start_abs_1, A2_ges_start, A2_ges_end) &
+            between(uwb_start_abs_1, A2_ges_start, A2_ges_end) &
               uwb_end_abs_1 > A2_ges_end
             ~  interval(uwb_start_abs_1, A2_ges_end),
             
-                        between(uwb_end_abs_1, A2_ges_start, A2_ges_end) &
+            between(uwb_end_abs_1, A2_ges_start, A2_ges_end) &
               uwb_start_abs_1 < A2_ges_start
             ~  interval(A2_ges_start, uwb_end_abs_1),
             
-                        uwb_start_abs_1 < A2_ges_start &
+            uwb_start_abs_1 < A2_ges_start &
               uwb_end_abs_1 > A2_ges_end
             ~  interval(A2_ges_start, A2_ges_end)
           )
@@ -518,19 +518,20 @@ t_kont_1_s1_3_w_par_gapfill <-
           mutate(
             # En ####
             
-            Int_dist_all = case_when(              uwb_start_abs_1 >= E3_ges_start &
+            Int_dist_all = case_when(
+              uwb_start_abs_1 >= E3_ges_start &
                 uwb_end_abs_1 <= E3_ges_end
               ~ interval(uwb_start_abs_1, uwb_end_abs_1),
               
-                            between(uwb_start_abs_1, E3_ges_start, E3_ges_end) &
+              between(uwb_start_abs_1, E3_ges_start, E3_ges_end) &
                 uwb_end_abs_1 > E3_ges_end
               ~  interval(uwb_start_abs_1, E3_ges_end),
               
-                            between(uwb_end_abs_1, E3_ges_start, E3_ges_end) &
+              between(uwb_end_abs_1, E3_ges_start, E3_ges_end) &
                 uwb_start_abs_1 < E3_ges_start
               ~  interval(E3_ges_start, uwb_end_abs_1),
               
-                            uwb_start_abs_1 < E3_ges_start &
+              uwb_start_abs_1 < E3_ges_start &
                 uwb_end_abs_1 > E3_ges_end
               ~  interval(E3_ges_start, E3_ges_end)
             )
@@ -549,15 +550,15 @@ t_kont_1_s1_3_w_par_gapfill <-
                     uwb_end_abs_1 <= HZ1_3_ges_end
                   ~ interval(uwb_start_abs_1, uwb_end_abs_1),
                   
-                                    between(uwb_start_abs_1, HZ1_3_ges_start, HZ1_3_ges_end) &
+                  between(uwb_start_abs_1, HZ1_3_ges_start, HZ1_3_ges_end) &
                     uwb_end_abs_1 > HZ1_3_ges_end
                   ~  interval(uwb_start_abs_1, HZ1_3_ges_end),
                   
-                                    between(uwb_end_abs_1, HZ1_3_ges_start, HZ1_3_ges_end) &
+                  between(uwb_end_abs_1, HZ1_3_ges_start, HZ1_3_ges_end) &
                     uwb_start_abs_1 < HZ1_3_ges_start
                   ~  interval(HZ1_3_ges_start, uwb_end_abs_1),
                   
-                                    uwb_start_abs_1 < HZ1_3_ges_start &
+                  uwb_start_abs_1 < HZ1_3_ges_start &
                     uwb_end_abs_1 > HZ1_3_ges_end
                   ~  interval(HZ1_3_ges_start, HZ1_3_ges_end)
                 )
@@ -578,15 +579,15 @@ t_kont_1_s1_3_w_par_gapfill <-
                   uwb_end_abs_1 <= P3_ges_end
                 ~ interval(uwb_start_abs_1, uwb_end_abs_1),
                 
-                                between(uwb_start_abs_1, P3_ges_start, P3_ges_end) &
+                between(uwb_start_abs_1, P3_ges_start, P3_ges_end) &
                   uwb_end_abs_1 > P3_ges_end
                 ~  interval(uwb_start_abs_1, P3_ges_end),
                 
-                                between(uwb_end_abs_1, P3_ges_start, P3_ges_end) &
+                between(uwb_end_abs_1, P3_ges_start, P3_ges_end) &
                   uwb_start_abs_1 < P3_ges_start
                 ~  interval(P3_ges_start, uwb_end_abs_1),
                 
-                                uwb_start_abs_1 < P3_ges_start &
+                uwb_start_abs_1 < P3_ges_start &
                   uwb_end_abs_1 > P3_ges_end
                 ~  interval(P3_ges_start, P3_ges_end)
               )
@@ -607,15 +608,15 @@ t_kont_1_s1_3_w_par_gapfill <-
                   uwb_end_abs_1 <= HZ2_3_ges_end
                 ~ interval(uwb_start_abs_1, uwb_end_abs_1),
                 
-                                between(uwb_start_abs_1, HZ2_3_ges_start, HZ2_3_ges_end) &
+                between(uwb_start_abs_1, HZ2_3_ges_start, HZ2_3_ges_end) &
                   uwb_end_abs_1 > HZ2_3_ges_end
                 ~  interval(uwb_start_abs_1, HZ2_3_ges_end),
                 
-                                between(uwb_end_abs_1, HZ2_3_ges_start, HZ2_3_ges_end) &
+                between(uwb_end_abs_1, HZ2_3_ges_start, HZ2_3_ges_end) &
                   uwb_start_abs_1 < HZ2_3_ges_start
                 ~  interval(HZ2_3_ges_start, uwb_end_abs_1),
                 
-                                uwb_start_abs_1 < HZ2_3_ges_start &
+                uwb_start_abs_1 < HZ2_3_ges_start &
                   uwb_end_abs_1 > HZ2_3_ges_end
                 ~  interval(HZ2_3_ges_start, HZ2_3_ges_end)
               )
@@ -639,15 +640,15 @@ t_kont_1_s1_3_w_par_gapfill <-
                   uwb_end_abs_1 <= A3_ges_end
                 ~ interval(uwb_start_abs_1, uwb_end_abs_1),
                 
-                                between(uwb_start_abs_1, A3_ges_start, A3_ges_end) &
+                between(uwb_start_abs_1, A3_ges_start, A3_ges_end) &
                   uwb_end_abs_1 > A3_ges_end
                 ~  interval(uwb_start_abs_1, A3_ges_end),
                 
-                                between(uwb_end_abs_1, A3_ges_start, A3_ges_end) &
+                between(uwb_end_abs_1, A3_ges_start, A3_ges_end) &
                   uwb_start_abs_1 < A3_ges_start
                 ~  interval(A3_ges_start, uwb_end_abs_1),
                 
-                                uwb_start_abs_1 < A3_ges_start &
+                uwb_start_abs_1 < A3_ges_start &
                   uwb_end_abs_1 > A3_ges_end
                 ~  interval(A3_ges_start, A3_ges_end)
               )
@@ -662,7 +663,7 @@ t_kont_1_s1_3_w_par_gapfill <-
       )
     
     t_kont_1_s1_3_fill <- t_kont_1_dist_s1_3 %>%
-
+      
       ungroup() %>%
       group_by(Scenario, Part, TagID, uwb_targetTagID) %>%
       summarize(uwb_start_1 = min(int_start(Int_dist_all)),
@@ -687,7 +688,7 @@ t_kont_1_s1_3_w_par_gapfill <-
                Part == "Half Time 2") ~ round((t_kont_all_non_w * 2.14), 5),
             TRUE ~ t_kont_all_non_w
           )
-       
+        
       )
     
     t_kont_1_s1_3_fill
@@ -699,7 +700,7 @@ stopCluster(cl)
 gc()
 
 
-# aggregate entry 1 und 2 in Scenario 1 
+# aggregate entry 1 und 2 in Scenario 1
 
 
 t_kont_1_s1_3_w_par_gapfill_agg <-

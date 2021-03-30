@@ -9,7 +9,7 @@ recorded_tags_sel <- recorded_tags_all %>%
   
   left_join(serial_name, by = c("TagID" = "SN_Serial_Char")) %>%
   filter(SN_Typ %in% "Tag" == F, TagID %in% dev_tracer$name) %>%
-
+  
   mutate(
     uwb_start_sec_corr_abs = as_datetime(uwb_start_sec_corr, tz = "Europe/Berlin"),
     REU_Timestamp_Corr_abs = as_datetime(REU_Timestamp_Corr, tz = "Europe/Berlin")
